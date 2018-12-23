@@ -47,7 +47,7 @@ html,body {
 	position:absolute;
 	/*c00cjz00 200px > 81px  height 100% > 245px */	
 	width:81px;
-	height: 260px;
+	height: 100%;
 	top:0;
 	left:0;
 	/*c00cjz00 change	
@@ -95,9 +95,9 @@ html,body {
 
 #regionList {
 	position:relative;
-	min-height:30px;
+	min-height:25px;
 	height:auto;
-	width:200px;
+	width:81px;
 	background-color:rgba(250,250,250,0.3);
 	border:0;
 	margin-bottom:0;
@@ -177,8 +177,8 @@ html,body {
 	position: relative;
 }
 .region-color {
-	width:1.5rem;
-	height:1.5rem;
+	width:0.5rem;
+	height:1.2rem;
 	border:thin solid grey;
 	display:inline-block;
 	vertical-align:middle;

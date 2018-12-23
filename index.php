@@ -66,6 +66,11 @@ if (!isset($_GET['source'])) {
 	<img class="button" id="select"       title="Select"                 src="img/select.svg" />
 	<img class="button" id="draw"         title="Draw"                   src="img/draw.svg" />
 	<img class="button" id="draw-polygon" title="Draw polygon"           src="img/draw-polygon.svg" />
+	<div class="row">
+		<div class="cell">
+			<div id="regionList"></div>
+		</div>
+	</div>
 </div>
 
 <div id="colorSelector">

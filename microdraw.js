@@ -41,7 +41,7 @@ function newRegion(arg, imageNumber) {
 		reg.name = arg.name;
 	}
 	else {
-		reg.name = "Untitled " + reg.uid;
+		reg.name = "P" + reg.uid;
 	}
 
 	var color = regionHashColor(reg.name);
@@ -239,13 +239,13 @@ function regionTag(name,uid) {
         else {
             color = regionHashColor(name);
         }
-        str = [ "<div class='region-tag' id='" + uid + "' style='padding:2px'>",
-                "<img class='eye' title='Region visible' id='eye_" + uid + "' src='img/eyeOpened.svg' />",
+        str = [ "<div class='region-tag' id='" + uid + "' style='padding:0px'>",
+                "<!--img class='eye' title='Region visible' id='eye_" + uid + "' src='img/eyeOpened.svg' /-->",
                 "<div class='region-color'",
                 "style='background-color:rgba(",
                 parseInt(color.red*mult),",",parseInt(color.green*mult),",",parseInt(color.blue*mult),",0.67",
                 ")'></div>",
-                "<span class='region-name'>" + name + "</span>",
+                "<span class='region-name' style='font-size:12px;'>" + name + "</span>",
                 "</div>",
                 ].join(" ");
     }
@@ -427,7 +427,40 @@ function singlePressOnRegion(event) {
     var reg;
 
     if( debug ) console.log(event);
-    if( event.clientX > 20 ) {
+
+
+
+
+            if( el.hasClass("ontology") ) {
+                // Click on regionPicker (ontology selection list)
+                var newName = el.find(".region-name").text();
+                uid = $(".region-tag.selected").attr('id');
+                reg = findRegionByUID(uid);
+                changeRegionName(reg,newName);
+                $("div#regionPicker").appendTo($("body")).hide();
+            }
+            else {
+                // Click on regionList (list or annotated regions)
+                uid = $(this).attr('id');
+                reg = findRegionByUID(uid);
+                if( reg ) {
+                    selectRegion(reg);
+                }
+                else
+                    console.log("region undefined");
+            }
+
+
+			
+
+
+
+
+
+
+
+
+    /*if( event.clientX > 20 ) {
         if( event.clientX > 50 ) {
 
             if( el.hasClass("ontology") ) {
@@ -462,7 +495,7 @@ function singlePressOnRegion(event) {
     else {
         var reg = findRegionByUID(this.id);
         toggleRegion(reg);
-    }
+    }*/
 }
 
 function doublePressOnRegion(event) {
@@ -470,8 +503,18 @@ function doublePressOnRegion(event) {
 
     event.stopPropagation();
     event.preventDefault();
-
-    if( event.clientX > 20 ) {
+            if( config.drawingEnabled ) {
+                if( config.regionOntology == true ) {
+                regionPicker(this);
+                }
+                else {
+                    var name = prompt("Region name", findRegionByUID(this.id).name);
+                    if( name != null ) {
+                        changeRegionName(findRegionByUID(this.id), name);
+                    }
+                }
+            }
+    /*if( event.clientX > 20 ) {
         if( event.clientX > 50 ) {
             if( config.drawingEnabled ) {
                 if( config.regionOntology == true ) {
@@ -498,7 +541,7 @@ function doublePressOnRegion(event) {
     else {
         var reg = findRegionByUID(this.id);
         toggleRegion(reg);
-    }
+    }*/
 }
 
 var tap = false
@@ -676,7 +719,10 @@ function mouseDown(x,y) {
             // start a new region
             var path = new paper.Path({segments:[point]})
             path.strokeWidth = config.defaultStrokeWidth;
-            region = newRegion({path:path});
+            //c00cjz00
+			//region = newRegion({path:path});
+			var myName= "phase1";
+			region = newRegion({name:myName,path:path});
             // signal that a new region has been created for drawing
             newRegionFlag = true;
 
@@ -693,7 +739,10 @@ function mouseDown(x,y) {
                 // Start a new Region with alpha 0
                 var path = new paper.Path({segments:[point]})
                 path.strokeWidth = config.defaultStrokeWidth;
-                region = newRegion({path:path});
+				//c00cjz00
+				//region = newRegion({path:path});
+				var myName= "normal";
+				region = newRegion({name:myName,path:path});
 				//c00cjz00 change
                 //region.path.fillColor.alpha = 0.01;
 				region.path.fillColor.alpha = config.defaultFillAlpha;
