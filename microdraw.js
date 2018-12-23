@@ -49,7 +49,10 @@ function newRegion(arg, imageNumber) {
 	if( arg.path ) {
 		reg.path = arg.path;
         reg.path.strokeWidth = arg.path.strokeWidth ? arg.path.strokeWidth : config.defaultStrokeWidth;
-        reg.path.strokeColor = arg.path.strokeColor ? arg.path.strokeColor : config.defaultStrokeColor;
+		// c00cjz00 change
+        //reg.path.strokeColor = arg.path.strokeColor ? arg.path.strokeColor : config.defaultStrokeColor;
+        reg.path.strokeColor = arg.path.strokeColor ? arg.path.strokeColor : 'rgba('+color.red+','+color.green+','+color.blue+',0.95)';;
+
 		reg.path.strokeScaling = false;
 		reg.path.fillColor = arg.path.fillColor ? arg.path.fillColor :'rgba('+color.red+','+color.green+','+color.blue+','+config.defaultFillAlpha+')';
 		reg.path.selected = false;
@@ -299,7 +302,10 @@ function changeRegionName(reg,name) {
 
     // Update path
     reg.name = name;
-    reg.path.fillColor = 'rgba('+color.red+','+color.green+','+color.blue+',0.5)';
+    //c00cjz00 change
+	//reg.path.fillColor = 'rgba('+color.red+','+color.green+','+color.blue+',0.5)';
+	reg.path.strokeColor = 'rgba('+color.red+','+color.green+','+color.blue+',0.95)';
+
     paper.view.draw();
 
     // Update region tag
@@ -688,7 +694,10 @@ function mouseDown(x,y) {
                 var path = new paper.Path({segments:[point]})
                 path.strokeWidth = config.defaultStrokeWidth;
                 region = newRegion({path:path});
-                region.path.fillColor.alpha = 0;
+				//c00cjz00 change
+                //region.path.fillColor.alpha = 0.01;
+				region.path.fillColor.alpha = config.defaultFillAlpha;
+				
                 region.path.selected = true;
                 drawingPolygonFlag = true;
                 commitMouseUndo();
@@ -764,6 +773,8 @@ function mouseUp() {
 
     if ( newRegionFlag == true ) {
         region.path.closed = true;
+		//c00cjz00 add
+		region.path.fillColor.alpha = 0.01;		
         region.path.fullySelected = true;
         
         // delete unnecessary segments while preserving the shape of the region to make it modifiable and & adding handles to the segments
@@ -847,7 +858,8 @@ function toggleHandles() {
         }
         else {
             var undoInfo = getUndo();
-            region.path.smooth();
+            //c00cjz00 mark
+			//region.path.smooth();
             saveUndo(undoInfo);
         }
         paper.view.draw();
@@ -1139,9 +1151,11 @@ function finishDrawingPolygon(closed){
         // finished the drawing of the polygon
         if( closed == true ) {
             region.path.closed = true;
-            region.path.fillColor.alpha = config.defaultFillAlpha;
+            //c00cjz00 change
+			//region.path.fillColor.alpha = config.defaultFillAlpha;
+			region.path.fillColor.alpha = 0.01;
         } else {
-            region.path.fillColor.alpha = 0;
+            region.path.fillColor.alpha = 0.01;
         }
         region.path.fullySelected = true;
         //region.path.smooth();
@@ -1997,7 +2011,8 @@ function initMicrodraw2(obj) {
 
     // set default values for new regions (general configuration)
     if (config.defaultStrokeColor == undefined) config.defaultStrokeColor = 'black';
-    if (config.defaultStrokeWidth == undefined) config.defaultStrokeWidth = 1;
+	//c00cjz00 change 1 to 3
+    if (config.defaultStrokeWidth == undefined) config.defaultStrokeWidth = 3;
     if (config.defaultFillAlpha == undefined) config.defaultFillAlpha = 0.5;
     // set default values for new regions (per-brain configuration)
     if (obj.configuration) {
