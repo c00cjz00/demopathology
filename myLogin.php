@@ -201,7 +201,12 @@ span.psw {
 <div align="center">
 <button class="button0 button1 center" onclick="document.getElementById('id01').style.display='block'" style="width:auto;"><h1>國家高速電腦中心<p>數位醫學影像 AI 系統</p></h1></button>
 </div>
-
+<bR><br>
+<div align="center">
+  <table width="485">
+<tr><td  align="center"><small><font color="#cccccc">This platform is based on open source frameworks to ensure its maintainability and extensibility. The interactive multi-resolution visualisation is based on OpenSeadragon. The vectorial annotation is based on Paper and Microdraw. </font></small>
+</td></tr></table>
+</div>
 <div id="id01" class="modal">
   
   <form class="modal-content animate" action="index.php?source=pngCancer.json" method="post">
