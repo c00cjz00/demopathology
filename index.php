@@ -54,8 +54,10 @@ if (!isset($_GET['source'])) {
 	<div class="row">
 		<div id="myNavigator"></div>
 	</div>
-    <div align="center"><p></p>		
-	<a href="index.php?op=logout"><img src="img/home.svg" title="登出"/></a><p></p>
+	    <div align="center">	
+	<p></p>	
+    <img class="button" id="home"           title="Home"                   src="img/home.svg" />
+	<a href="index.php?op=logout"><img src="img/logout.svg" title="登出"/></a><p></p>
 	<input id="slice-name" list="slice-names" style="width:70px" />	
 	</div>	
 	<img class="button" id="prev"    title="Previous slice"         src="img/prev.svg" />
