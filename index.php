@@ -46,6 +46,14 @@ if (!isset($_GET['source'])) {
 	<link rel="stylesheet" href="css/microdraw.css" type="text/css" />
 	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />	
 	<style>
+.circle0{
+    /*padding: px;
+    border-radius: 2px;
+    border: double 2px rgba(255,255,255,0);
+    background: rgba(0,0,0,0.7);
+    background-clip: padding-box;*/
+    border: double 1px rgba(255,255,255,0);	
+}	
 .circle{
     /*padding: px;
     border-radius: 2px;
@@ -65,9 +73,9 @@ if (!isset($_GET['source'])) {
 		<div id="myNavigator"></div>
 	</div>
     <p></p>
-	<div align="center" class="circle">		
+	<div align="center" class="circle0">		
 	<img class="button" id="prev"    title="Previous slice"         src="img/myprev.svg" />
-	<input id="slice-name" list="slice-names" style="width:24px" />		
+	<input id="slice-name" list="slice-names" style="width:35px" />		
 	<img class="button" id="next"    title="Next slice"             src="img/mynext.svg" />
 	</div>	
 	<div align="center" class="circle">			
