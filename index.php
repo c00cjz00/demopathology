@@ -52,7 +52,7 @@ if (!isset($_GET['source'])) {
     border: double 2px rgba(255,255,255,0);
     background: rgba(0,0,0,0.7);
     background-clip: padding-box;*/
-    border: double 1px rgba(255,255,255,0);	
+    border: double 0px rgba(255,255,255,0);	
 }	
 .circle{
     /*padding: px;
@@ -78,6 +78,7 @@ if (!isset($_GET['source'])) {
 	<input id="slice-name" list="slice-names" style="width:35px" />		
 	<img class="button" id="next"    title="Next slice"             src="img/mynext.svg" />
 	</div>	
+	<div align="center" class="circle"></div>	
 	<div align="center" class="circle">			
     <img class="button" id="home"           title="Home"                   src="img/myhome.svg" />
 	<a href="index.php?op=logout"><img src="img/mylogout.svg" title="登出"/></a>
