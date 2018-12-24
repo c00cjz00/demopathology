@@ -1683,7 +1683,7 @@ function initAnnotationOverlay(data) {
 
     /* RT: commenting this line out solves the image size issues */
        // set size of the current overlay to match the size of the current image
-       //magicV = viewer.world.getItemAt(0).getContentSize().x / 100;
+       magicV = viewer.world.getItemAt(0).getContentSize().x / 100;
 
     transform();
 }
