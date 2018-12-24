@@ -303,7 +303,7 @@ function changeRegionName(reg,name) {
     // Update path
     reg.name = name;
     //c00cjz00 change
-	reg.path.fillColor = 'rgba('+color.red+','+color.green+','+color.blue+',0.5)';
+	reg.path.fillColor = 'rgba('+color.red+','+color.green+','+color.blue+',0.01)';
 	reg.path.strokeColor = 'rgba('+color.red+','+color.green+','+color.blue+',0.95)';
 
     paper.view.draw();
@@ -721,7 +721,7 @@ function mouseDown(x,y) {
             path.strokeWidth = config.defaultStrokeWidth;
             //c00cjz00
 			//region = newRegion({path:path});
-			var myName= "phase1";
+			var myName= "Bubble";
 			region = newRegion({name:myName,path:path});
             // signal that a new region has been created for drawing
             newRegionFlag = true;

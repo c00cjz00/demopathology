@@ -209,7 +209,7 @@ span.psw {
 </div>
 <div id="id01" class="modal">
   
-  <form class="modal-content animate" action="index.php?source=pngCancer.json" method="post">
+  <form class="modal-content animate" action="index.php?source=jpgCancer.json" method="post">
     <div class="container">
       <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
 	  <div align="center"><img src="https://www.w3schools.com/howto/img_avatar2.png" alt="Avatar" class="avatar"></div><br>
