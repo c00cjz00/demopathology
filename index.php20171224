@@ -45,16 +45,6 @@ if (!isset($_GET['source'])) {
 	<meta name="viewport" content="width=device-width,user-scalable=no" />
 	<link rel="stylesheet" href="css/microdraw.css" type="text/css" />
 	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />	
-	<style>
-.circle{
-    /*padding: px;
-    border-radius: 2px;
-    border: double 2px rgba(255,255,255,0);
-    background: rgba(0,0,0,0.7);
-    background-clip: padding-box;*/
-    border: double 4px rgba(255,255,255,0);	
-}	
-	</style>
 </head>
 
 <body>
@@ -64,28 +54,20 @@ if (!isset($_GET['source'])) {
 	<div class="row">
 		<div id="myNavigator"></div>
 	</div>
-    <p></p>
-	<div align="center" class="circle">		
-	<img class="button" id="prev"    title="Previous slice"         src="img/myprev.svg" />
-	<input id="slice-name" list="slice-names" style="width:24px" />		
-	<img class="button" id="next"    title="Next slice"             src="img/mynext.svg" />
+	    <div align="center">	
+	<p></p>	
+    <img class="button" id="home"           title="Home"                   src="img/home.svg" />
+	<a href="index.php?op=logout"><img src="img/logout.svg" title="登出"/></a><p></p>
+	<input id="slice-name" list="slice-names" style="width:70px" />	
 	</div>	
-	<div align="center" class="circle">			
-    <img class="button" id="home"           title="Home"                   src="img/myhome.svg" />
-	<a href="index.php?op=logout"><img src="img/mylogout.svg" title="登出"/></a>
-	</div>	
-	<div align="center" class="circle">		
-	<img class="button" id="save"        title="Save annotations"       src="img/mysave.svg" />	
-	<img class="button" id="delete"      title="Delete region"          src="img/mytrash.svg" >
-	</div>	
-	<div align="center" class="circle">				
-	<img class="button" id="zoom"        title="Navigator"              src="img/mynavigate.svg" />
-	<img class="button" id="select"       title="Select"                 src="img/myselect.svg" />
-	</div>
-	<div align="center" class="circle">				
-	<img class="button" id="draw"         title="Draw"                   src="img/mydraw.svg" />
-	<img class="button" id="draw-polygon" title="Draw polygon"           src="img/mydraw-polygon.svg" />
-	</div>
+	<img class="button" id="prev"    title="Previous slice"         src="img/prev.svg" />
+	<img class="button" id="next"    title="Next slice"             src="img/next.svg" />
+	<img class="button" id="save"        title="Save annotations"       src="img/save.svg" />	
+	<img class="button" id="delete"      title="Delete region"          src="img/delete.svg" />
+	<img class="button" id="zoom"        title="Navigator"              src="img/navigate.svg" />
+	<img class="button" id="select"       title="Select"                 src="img/select.svg" />
+	<img class="button" id="draw"         title="Draw"                   src="img/draw.svg" />
+	<img class="button" id="draw-polygon" title="Draw polygon"           src="img/draw-polygon.svg" />
 	<div class="row">
 		<div class="cell">
 			<div id="regionList"></div>
@@ -132,8 +114,8 @@ if (!isset($_GET['source'])) {
 
 
 <!-- Load javascript -->
-<script src="lib/paper-full-1.0.2.js"></script>
-<!--script src="lib/paper-full-0.9.25.min.js"></script-->
+<!--script src="lib/paper-full-1.0.2.js"></script-->
+<script src="lib/paper-full-0.9.25.min.js"></script>
 <script src="lib/openseadragon/openseadragon.js"></script>
 <script src="lib/openseadragon-viewerinputhook.min.js"></script>
 <script src="lib/OpenSeadragonScalebar/openseadragon-scalebar.js"></script>
