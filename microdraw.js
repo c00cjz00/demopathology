@@ -303,7 +303,7 @@ function changeRegionName(reg,name) {
     // Update path
     reg.name = name;
     //c00cjz00 change
-	//reg.path.fillColor = 'rgba('+color.red+','+color.green+','+color.blue+',0.5)';
+	reg.path.fillColor = 'rgba('+color.red+','+color.green+','+color.blue+',0.5)';
 	reg.path.strokeColor = 'rgba('+color.red+','+color.green+','+color.blue+',0.95)';
 
     paper.view.draw();
