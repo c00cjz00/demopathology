@@ -108,7 +108,7 @@ if (!isset($_GET['source'])) {
 	<img class="button" id="draw-polygon" title="Draw polygon"           src="img/mydraw-polygon.svg" />
 	</div>
 	<div align="center" class="circle">					
-	<select id="myBtn" onclick="myFunction()">
+	<select id="myBtn" onChange="myFunction()">
 	<option value="Phase1">Phase1</option>
 	<option value="Phase2">Phase2</option>
 	<option value="Phase3">Phase3</option>

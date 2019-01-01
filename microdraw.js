@@ -1164,7 +1164,7 @@ function applyUndo(undo) {
 		/* Create the path and add it to a specific project.
 		 */
 		var path = new paper.Path();
-		project.addChild(path);
+		project.activeLayer.addChild(path);
 		path.importJSON(el.json);
 		reg = newRegion({name:el.name, path:path}, undo.imageNumber);
         // here order matters. if fully selected is set after selected, partially selected paths will be incorrect
