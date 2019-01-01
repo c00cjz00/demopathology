@@ -835,7 +835,7 @@ function mouseUp() {
         var ppd = paper.view.pixelRatio
 
         // . mouse selection accuracy in pixels: about 5 dots, that is 5 ppd pixels
-        var pixelSelectAccuracy = 5.0*ppd
+        var pixelSelectAccuracy = 4.0*ppd
 
         // . ratio between project coordinates and browser pixels
         var coordsPerPixel = paper.view.size.width/paper.view.viewSize.width
@@ -844,8 +844,10 @@ function mouseUp() {
         var simplifyAccuracy = coordsPerPixel*pixelSelectAccuracy
         
         // . the simplify function looks at the maximum squared distance from curve to original points
-        //region.path.simplify(simplifyAccuracy*simplifyAccuracy);
-
+        region.path.simplify(simplifyAccuracy*simplifyAccuracy);
+        
+        //backToSelect();
+                
         /*
         // previous monkey-patched code 
         var z = viewer.viewport.viewportToImageZoom(viewer.viewport.getZoom(true));
@@ -1792,7 +1794,7 @@ function updateSliceName() {
     $("#slice-name").val(currentImage);
     var slash_index = params.source.lastIndexOf("/") + 1;
     var filename    = params.source.substr(slash_index);
-    $("title").text("MicroDraw|" + filename + "|" + currentImage);
+    $("title").text("iSlide|" + filename + "|" + currentImage);
 }
 
 function initShortCutHandler() {
@@ -1955,11 +1957,13 @@ function initMicrodraw() {
     shortCutHandler({pc:'^ z',mac:'cmd z'},cmdUndo);
     shortCutHandler({pc:'^ y',mac:'cmd y'},cmdRedo);
     if( config.drawingEnabled ) {
-        shortCutHandler({pc:'^ x',mac:'cmd x'},function() { console.log("cut!")});
+        //shortCutHandler({pc:'^ x',mac:'cmd x'},function() { console.log("cut!")});
         shortCutHandler({pc:'^ v',mac:'cmd v'},cmdPaste);
-        shortCutHandler({pc:'^ a',mac:'cmd a'},function() { console.log("select all!")});
+        //shortCutHandler({pc:'^ a',mac:'cmd a'},function() { console.log("select all!")});
         shortCutHandler({pc:'^ c',mac:'cmd c'},cmdCopy);
         shortCutHandler({pc:'#46',mac:'#8'},cmdDeleteSelected);  // delete key
+        shortCutHandler({pc:'^ a',mac:'cmd a'},backToDraw);
+        shortCutHandler({pc:'^ x',mac:'cmd x'},backToSelect);
     }
     shortCutHandler({pc:'#37',mac:'#37'},loadPreviousImage); // left-arrow key
     shortCutHandler({pc:'#39',mac:'#39'},loadNextImage);     // right-arrow key
