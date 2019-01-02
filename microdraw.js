@@ -849,7 +849,7 @@ function mouseUp() {
         // . the simplify function looks at the maximum squared distance from curve to original points
         region.path.simplify(simplifyAccuracy*simplifyAccuracy);
         
-        //backToSelect();
+        backToSelect();
                 
         /*
         // previous monkey-patched code 
@@ -1236,6 +1236,13 @@ function backToSelect() {
 function backToDraw() {
     setTimeout(function() {
         selectedTool = "draw";
+        selectTool()
+    },100);
+}
+
+function backToPoly() {
+    setTimeout(function() {
+        selectedTool = "draw-polygon";
         selectTool()
     },100);
 }
@@ -1985,6 +1992,7 @@ function initMicrodraw() {
         shortCutHandler({pc:'#46',mac:'#8'},cmdDeleteSelected);  // delete key
         shortCutHandler({pc:'^ a',mac:'cmd a'},backToDraw);
         shortCutHandler({pc:'^ x',mac:'cmd x'},backToSelect);
+        shortCutHandler({pc:'^ q',mac:'cmd q'},backToPoly);		
     }
     shortCutHandler({pc:'#37',mac:'#37'},loadPreviousImage); // left-arrow key
     shortCutHandler({pc:'#39',mac:'#39'},loadNextImage);     // right-arrow key
