@@ -74,7 +74,11 @@ if (!isset($_GET['source'])) {
 	 width:30px;   
 	 font-size:small 
 	}	
+	#myBtn2{
+	 font-size:small 
+	}	
 	</style>
+
 </head>
 
 <body>
@@ -107,20 +111,28 @@ if (!isset($_GET['source'])) {
 	<img class="button" id="draw"         title="Draw"                   src="img/mydraw.svg" />
 	<img class="button" id="draw-polygon" title="Draw polygon"           src="img/mydraw-polygon.svg" />
 	</div>
+	<div align="center" class="circle">				
+	<img class="button" id="copy"           title="Copy path"              src="img/mycopy.svg" />
+	<img class="button" id="paste"          title="Paste path"             src="img/mypaste.svg" />	
+	</div>
+	<div align="center" class="circle">				
+	<img class="button" id="undo"           title="undo"              src="img/myundo.svg" />
+	<img class="button" id="redo"          title="redo"             src="img/myredo.svg" />	
+	</div>
 	<div align="center" class="circle">					
 	<select id="myBtn" onChange="myFunction()">
 	<option value="Phase1">Phase1</option>
 	<option value="Phase2">Phase2</option>
 	<option value="Phase3">Phase3</option>
 	<option value="Normal">Normal</option>
-	<option value="Bubble">Bubble</option>
+	<option value="Bubble" selected="selected">Bubble</option>
 	</select>	
 	</div>	
-	<div class="row">
-		<div class="cell">
-			<div id="regionList"></div>
-		</div>
-	</div>
+	<!--div class="row">
+		<div class="cell"-->
+			<div id="regionList" class="myBtn2"></div>
+		<!--/div>
+	</div-->
 </div>
 
 <div id="colorSelector">
@@ -163,7 +175,7 @@ if (!isset($_GET['source'])) {
 
 <!-- Load javascript -->
 <script>
- var myName= "phase1";
+ var myName= "Bubble";
  function myFunction() {
   var x = document.getElementById("myBtn").value;
   myName = x;

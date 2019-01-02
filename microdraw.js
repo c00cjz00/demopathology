@@ -361,7 +361,10 @@ function updateRegionList() {
         // handle double click on computers
         el.dblclick(doublePressOnRegion);
         // handle single and double tap on touch devices
-        el.on("touchstart",handleRegionTap);
+        // c00cjz00 20190102
+		//el.on("touchstart",handleRegionTap);
+		el.on("mousedown",handleRegionTap);
+
     }
 }
 
@@ -1230,6 +1233,13 @@ function backToSelect() {
     },100);
 }
 
+function backToDraw() {
+    setTimeout(function() {
+        selectedTool = "draw";
+        selectTool()
+    },100);
+}
+
 /**
  * This function deletes the currently selected object.
  */
@@ -1252,7 +1262,8 @@ function cmdPaste() {
         saveUndo(undoInfo);
         console.log( "paste " + copyRegion.name );
         if( findRegionByName(copyRegion.name) ) {
-            copyRegion.name += " Copy";
+            //c00cjz00 20190102
+			//copyRegion.name += " Copy";
         }
         var reg = JSON.parse(JSON.stringify(copyRegion));
         reg.path = new paper.Path();
@@ -1331,7 +1342,17 @@ function toolSelection(event) {
             //backToPreviousTool(prevTool);
             backToSelect();
             break;
-        case "simplify":
+        case "undo":
+            cmdUndo();
+            //backToPreviousTool(prevTool);
+            backToSelect();
+        break;
+		case "redo":
+            cmdRedo();
+            //backToPreviousTool(prevTool);
+            backToSelect();
+        break;
+		case "simplify":
             simplify(region);
             //backToPreviousTool(prevTool);
             backToSelect();
