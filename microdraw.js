@@ -2217,7 +2217,7 @@ function zoomInAnnotation(initX,initY,imageWidthRect,imageHeightRect) {
  imageRectangle = viewer.viewport.imageToViewportRectangle(initX, initY, imageWidthRect, imageHeightRect); 
  //viewer.viewport.fitBounds(imageRectangle, true); 
  viewer.viewport.fitBounds(imageRectangle);
- setTimeout(function() { viewer.viewport.zoomBy(0.5).applyConstraints(); }, 1000); 
+ setTimeout(function() { viewer.viewport.zoomBy(0.7).applyConstraints(); }, 1000); 
 }
 
 /*
