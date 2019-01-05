@@ -162,6 +162,7 @@ function selectRegionColor(reg) {
     // Select path
     for( i = 0; i < ImageInfo[currentImage]["Regions"].length; i++ ) {
         if( ImageInfo[currentImage]["Regions"][i] == reg ) {
+	        region = reg;
 			myName = reg.name;
 			var color = regionHashColor(myName);			
 			ImageInfo[currentImage]["Regions"][i].path.fillColor = 'rgba('+color.red+','+color.green+','+color.blue+',0.25)';			
@@ -172,6 +173,22 @@ function selectRegionColor(reg) {
         }
     }
     paper.view.draw();
+	
+	// Select region name in list
+    $("#regionList > .region-tag").each(function(i){
+        $(this).addClass("deselected");
+        $(this).removeClass("selected");
+    });
+
+    var tag = $("#regionList > .region-tag#" + reg.uid);
+    $(tag).removeClass("deselected");
+    $(tag).addClass("selected");
+
+    if(debug) console.log("< selectRegion");
+
+    // update colorPicker
+    getAnnotationStyle( reg );	
+	
 }
 
 
