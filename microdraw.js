@@ -448,6 +448,19 @@ function singlePressOnRegion(event) {
                 reg = findRegionByUID(uid);
                 if( reg ) {
                     selectRegion(reg);
+					var sw = viewer.source.width;
+					var sh = viewer.source.height;
+					var plusNum = (sw/1000); 
+					if (sw < sh) {
+						var plusNum = (sh/1000); 
+					}
+					var myBounds = reg.path.bounds;
+					var myWidth = (reg.path.bounds.width*plusNum);
+					var myHeight = (reg.path.bounds.height*plusNum);
+					var myX = ((reg.path.bounds._x)*plusNum*1.00);
+					var myY = ((reg.path.bounds._y)*plusNum*1.00);		
+					//console.log(myBounds,myX,myY,myWidth,myHeight,sw,sh,plusNum);
+					zoomInAnnotation(myX,myY,myWidth,myHeight);
                 }
                 else
                     console.log("region undefined");
@@ -2198,6 +2211,14 @@ $(function() {
     });
 });
 
+function zoomInAnnotation(initX,initY,imageWidthRect,imageHeightRect) {
+  //<input type="button" onClick="zoomInAnnotation(56960.748193875,55301.897723819,11491.769314154,10652.954035749);"; style="width:80px;height:24px;font-size:14px;" value="Link 4" />	
+ //imageRectangle = viewer.viewport.imageToViewportRectangle(0.5, 0.1, 1,1);
+ imageRectangle = viewer.viewport.imageToViewportRectangle(initX, initY, imageWidthRect, imageHeightRect); 
+ //viewer.viewport.fitBounds(imageRectangle, true); 
+ viewer.viewport.fitBounds(imageRectangle);
+ setTimeout(function() { viewer.viewport.zoomBy(0.5).applyConstraints(); }, 1000); 
+}
 
 /*
     // Log microdraw
