@@ -125,9 +125,15 @@ function selectRegion(reg) {
             reg.path.fullySelected = true;
             prevColoredRegion = region;
             region = reg;
+			myName = reg.name;
+			var color = regionHashColor(myName);			
+			ImageInfo[currentImage]["Regions"][i].path.fillColor = 'rgba('+color.red+','+color.green+','+color.blue+',0.25)';								
         } else {
             ImageInfo[currentImage]["Regions"][i].path.selected = false;
             ImageInfo[currentImage]["Regions"][i].path.fullySelected = false;
+			myName = ImageInfo[currentImage]["Regions"][i].name;	
+			var color = regionHashColor(myName);
+			ImageInfo[currentImage]["Regions"][i].path.fillColor = 'rgba('+color.red+','+color.green+','+color.blue+',0.01)';						
         }
     }
     paper.view.draw();
@@ -147,6 +153,27 @@ function selectRegion(reg) {
     // update colorPicker
     getAnnotationStyle( reg );
 }
+
+
+
+function selectRegionColor(reg) {
+    if( debug ) console.log("> selectRegion");
+    var i;
+    // Select path
+    for( i = 0; i < ImageInfo[currentImage]["Regions"].length; i++ ) {
+        if( ImageInfo[currentImage]["Regions"][i] == reg ) {
+			myName = reg.name;
+			var color = regionHashColor(myName);			
+			ImageInfo[currentImage]["Regions"][i].path.fillColor = 'rgba('+color.red+','+color.green+','+color.blue+',0.25)';			
+        } else {
+			myName = ImageInfo[currentImage]["Regions"][i].name;	
+			var color = regionHashColor(myName);
+			ImageInfo[currentImage]["Regions"][i].path.fillColor = 'rgba('+color.red+','+color.green+','+color.blue+',0.01)';			
+        }
+    }
+    paper.view.draw();
+}
+
 
 function findRegionByUID(uid) {
     if( debug ) console.log("> findRegionByUID");
@@ -447,7 +474,7 @@ function singlePressOnRegion(event) {
                 uid = $(this).attr('id');
                 reg = findRegionByUID(uid);
                 if( reg ) {
-                    selectRegion(reg);
+                    selectRegionColor(reg);
 					var sw = viewer.source.width;
 					var sh = viewer.source.height;
 					var plusNum = (sw/1000); 
