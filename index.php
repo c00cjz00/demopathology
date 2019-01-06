@@ -63,10 +63,13 @@ if (!isset($_GET['source'])) {
 		border: double 4px rgba(255,255,255,0);	
 	}	
 	#myBtn{
-	 width:70px;   
+	 width:75px;   
 	 font-size:small 
 	}
-
+	#myBtnLabeling{
+	 width:75px;   
+	 font-size:small 
+	}
 	#myBtn option{
 	 width:200px;   
 	}
@@ -120,12 +123,21 @@ if (!isset($_GET['source'])) {
 	<img class="button" id="redo"          title="redo"             src="img/myredo.svg" />	
 	</div>
 	<div align="center" class="circle">					
+	<select id="myBtnLabeling" onChange="myFunctionLabeling()">
+	<option value="10" selected="selected">Simplify</option>	
+	<option value="1">1</option>
+	<option value="5">5</option>
+	<option value="10">10</option>
+	<option value="100">100</option>
+	<option value="1000">1000</option>
+	</select>	
 	<select id="myBtn" onChange="myFunction()">
+	<option value="Bubble" selected="selected">Labeling</option>			
 	<option value="Phase1">Phase1</option>
 	<option value="Phase2">Phase2</option>
 	<option value="Phase3">Phase3</option>
 	<option value="Normal">Normal</option>
-	<option value="Bubble" selected="selected">Bubble</option>
+	<option value="Bubble">Bubble</option>		
 	</select>	
 	</div>	
 	<!--div class="row">
@@ -175,13 +187,18 @@ if (!isset($_GET['source'])) {
 
 <!-- Load javascript -->
 <script>
+ var myLabelng= "10";
+ function myFunctionLabeling() {
+  var x = document.getElementById("myBtnLabeling").value;
+  myLabelng = x;
+ }  
  var myName= "Bubble";
  function myFunction() {
   var x = document.getElementById("myBtn").value;
   myName = x;
  }
 </script>
-
+<script type="text/javascript" src="index.js"></script>
 <!--script src="lib/paper-full-1.0.2.js"></script-->
 <script src="lib/paper-full-0.9.25.min.js"></script>
 <script src="lib/openseadragon/openseadragon.js"></script>

@@ -879,7 +879,7 @@ function mouseDrag(x,y,dx,dy) {
 
 function mouseUp() {
     if ( debug ) console.log("> mouseUp");
-
+	console.log(myLabelng,"smooth size");
     if ( newRegionFlag == true ) {
         region.path.closed = true;
 		//c00cjz00 add
@@ -904,14 +904,16 @@ function mouseUp() {
         var simplifyAccuracy = coordsPerPixel*pixelSelectAccuracy
         
         // . the simplify function looks at the maximum squared distance from curve to original points
-        var mySim = simplifyAccuracy*simplifyAccuracy;
-        //var mySim = 1;
-		if (mySim < 1) {
-			var mySim = 1;
-		}
-		region.path.simplify(mySim);
-        console.log(mySim,'allen');
-        backToSelect();
+        if (myLabelng != 0) {
+			var mySim = simplifyAccuracy*simplifyAccuracy/myLabelng;
+			//var mySim = 1;
+			if (mySim < 1) {
+				//var mySim = 1;
+			}
+			region.path.simplify(mySim);
+			console.log(mySim,'allen',simplifyAccuracy*simplifyAccuracy);
+        }
+		backToSelect();
                 
         /*
         // previous monkey-patched code 
