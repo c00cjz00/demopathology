@@ -182,8 +182,8 @@ if (!isset($_GET['source'])) {
  }
 </script>
 
-<script src="lib/paper-full-1.0.2.js"></script>
-<!--script src="lib/paper-full-0.9.25.min.js"></script-->
+<!--script src="lib/paper-full-1.0.2.js"></script-->
+<script src="lib/paper-full-0.9.25.min.js"></script>
 <script src="lib/openseadragon/openseadragon.js"></script>
 <!--script src="lib/openseadragon-viewerinputhook.min.js"></script-->
 <script src="lib/openseadragon-viewerinputhook.2.0.js"></script>

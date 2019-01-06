@@ -14,7 +14,7 @@ var handle;			            // currently selected control point or handle (if any)
 var selectedTool;	            // currently selected tool
 var viewer;			            // open seadragon viewer
 var navEnabled = true;          // flag indicating whether the navigator is enabled (if it's not, the annotation tools are)
-var magicV = 1000;	            // resolution of the annotation canvas - is changed automatically to reflect the size of the tileSource
+var magicV = 100000;	            // resolution of the annotation canvas - is changed automatically to reflect the size of the tileSource
 var myOrigin = {};	            // Origin identification for DB storage
 var	params;			            // URL parameters
 var	myIP;			            // user's IP
@@ -494,9 +494,9 @@ function singlePressOnRegion(event) {
                     selectRegionColor(reg);
 					var sw = viewer.source.width;
 					var sh = viewer.source.height;
-					var plusNum = (sw/1000); 
+					var plusNum = (sw/100000); 
 					if (sw < sh) {
-						var plusNum = (sh/1000); 
+						var plusNum = (sh/100000); 
 					}
 					var myBounds = reg.path.bounds;
 					var myWidth = (reg.path.bounds.width*plusNum);
@@ -906,12 +906,11 @@ function mouseUp() {
         // . the simplify function looks at the maximum squared distance from curve to original points
         var mySim = simplifyAccuracy*simplifyAccuracy;
         //var mySim = 1;
-        if (mySim > 1) {
-            var mySim = 1;
-        }
-        region.path.simplify(mySim);
+		if (mySim > 1) {
+			var mySim = 1;
+		}
+		region.path.simplify(mySim);
         console.log(mySim,'allen');
-        
         backToSelect();
                 
         /*
@@ -2175,6 +2174,7 @@ function initMicrodraw2(obj) {
 	params.tileSources = obj.tileSources;
 	viewer = OpenSeadragon({
 		id: "openseadragon1",
+	    //debugMode:  true,
 		prefixUrl: "lib/openseadragon/images/",
 		tileSources: [],
 		showReferenceStrip: false,
@@ -2186,7 +2186,7 @@ function initMicrodraw2(obj) {
 		zoomOutButton:"zoom-out",
 		homeButton:"home",
 		preserveViewport: true,
-    maxZoomPixelRatio: 2
+		maxZoomPixelRatio: 5
 	});
 
 
