@@ -125,11 +125,9 @@ if (!isset($_GET['source'])) {
 	<div align="center" class="circle">					
 	<select id="myBtnLabeling" onChange="myFunctionLabeling()">
 	<option value="10" selected="selected">Simplify</option>	
-	<option value="1">1</option>
-	<option value="5">5</option>
-	<option value="10">10</option>
-	<option value="100">100</option>
-	<option value="1000">1000</option>
+	<option value="1">Most</option>
+	<option value="10">Normal (Default)</option>
+	<option value="100">Less</option>
 	</select>	
 	<select id="myBtn" onChange="myFunction()">
 	<option value="Bubble" selected="selected">Labeling</option>			
@@ -137,7 +135,7 @@ if (!isset($_GET['source'])) {
 	<option value="Phase2">Phase2</option>
 	<option value="Phase3">Phase3</option>
 	<option value="Normal">Normal</option>
-	<option value="Bubble">Bubble</option>		
+	<option value="Bubble">Bubble (Default)</option>		
 	</select>	
 	</div>	
 	<!--div class="row">
