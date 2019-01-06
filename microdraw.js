@@ -496,7 +496,7 @@ function singlePressOnRegion(event) {
 					var sh = viewer.source.height;
 					var plusNum = (sw/100000); 
 					if (sw < sh) {
-						var plusNum = (sh/100000); 
+						//var plusNum = (sh/100000); 
 					}
 					var myBounds = reg.path.bounds;
 					var myWidth = (reg.path.bounds.width*plusNum);
@@ -906,7 +906,7 @@ function mouseUp() {
         // . the simplify function looks at the maximum squared distance from curve to original points
         var mySim = simplifyAccuracy*simplifyAccuracy;
         //var mySim = 1;
-		if (mySim > 1) {
+		if (mySim < 1) {
 			var mySim = 1;
 		}
 		region.path.simplify(mySim);
