@@ -196,7 +196,7 @@ if (!isset($_GET['source'])) {
   myName = x;
  }
 </script>
-<!--script type="text/javascript" src="index.js"></script-->
+<script type="text/javascript" src="index.js"></script>
 <!--script src="lib/paper-full-1.0.2.js"></script-->
 <script src="lib/paper-full-0.9.25.min.js"></script>
 <script src="lib/openseadragon/openseadragon.js"></script>
