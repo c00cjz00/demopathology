@@ -904,7 +904,13 @@ function mouseUp() {
         var simplifyAccuracy = coordsPerPixel*pixelSelectAccuracy
         
         // . the simplify function looks at the maximum squared distance from curve to original points
-        region.path.simplify(simplifyAccuracy*simplifyAccuracy);
+        var mySim = simplifyAccuracy*simplifyAccuracy;
+        //var mySim = 1;
+        if (mySim > 1) {
+            var mySim = 1;
+        }
+        region.path.simplify(mySim);
+        console.log(mySim,'allen');
         
         backToSelect();
                 
