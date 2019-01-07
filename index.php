@@ -182,6 +182,15 @@ if (!isset($_GET['source'])) {
 <!-- alert/info box after saving -->
 <div id="saveDialog"></div>
 
+<!-- PID logo -->
+<a id="logo">
+	<svg height="90" width="200">
+	  <text x="10" y="20" style="fill:blue;">ID: A123456789
+		<tspan x="10" y="40">Name: Da-Ming Wang</tspan>
+		<tspan x="10" y="60">Age: 19.5y</tspan>
+	  </text>
+	</svg>	
+</a>
 
 <!-- Load javascript -->
 <script>

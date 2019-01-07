@@ -29,6 +29,13 @@ var config = {}                 // App configuration object
 var isMac = navigator.platform.match(/Mac/i)?true:false;
 var isIOS = navigator.platform.match(/(iPhone|iPod|iPad)/i)?true:false;
 
+/*
+var sw = viewer.source.width;
+var sh = viewer.source.height;
+var magicV = sw; 
+var plusNum = (sw/100000); 
+console.log(sw,"> newRegion");		
+*/
 /***1
     Region handling functions
 */
@@ -494,7 +501,8 @@ function singlePressOnRegion(event) {
                     selectRegionColor(reg);
 					var sw = viewer.source.width;
 					var sh = viewer.source.height;
-					var plusNum = (sw/100000); 
+					var plusNum = (sw/magicV); 
+					//console.log(plusNum,sw,magicV,'peter');
 					if (sw < sh) {
 						//var plusNum = (sh/100000); 
 					}
@@ -503,7 +511,7 @@ function singlePressOnRegion(event) {
 					var myHeight = (reg.path.bounds.height*plusNum);
 					var myX = ((reg.path.bounds._x)*plusNum*1.00);
 					var myY = ((reg.path.bounds._y)*plusNum*1.00);		
-					//console.log(myBounds,myX,myY,myWidth,myHeight,sw,sh,plusNum);
+					console.log(myBounds,myX,myY,myWidth,myHeight,sw,sh,magicV,plusNum);
 					zoomInAnnotation(myX,myY,myWidth,myHeight);
                 }
                 else
@@ -1793,6 +1801,7 @@ function transform() {
     var w = magicV * bounds.width;
     var h = magicV * bounds.height;
     paper.view.setCenter(x + w / 2, y + h / 2);
+	magicV = sw;
     paper.view.zoom=(sw * z) / magicV;
 }
 

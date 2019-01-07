@@ -217,8 +217,8 @@ html,body {
 
 #logo {
 	position:absolute;
-	bottom:5px;
-	right:5px;
+	top:2px;
+	left:80px;
     -webkit-filter: drop-shadow( 2px 2px 2px #777 );
     -moz-filter: drop-shadow( 2px 2px 2px #777 );
     filter: drop-shadow( 2px 2px 2px #777 );
